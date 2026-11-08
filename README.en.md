@@ -33,6 +33,8 @@ The first launch opens Settings, and only four fields matter:
 
 Hit “Save and connect”. Next time it reconnects on its own (the password is encrypted on this machine with Windows DPAPI).
 
+![Connection settings](docs/step-settings.png)
+
 ### 2. Click a lab on the left — the canvas is the topology
 
 ![Topology view](docs/preview.png)
@@ -42,6 +44,8 @@ The “Labs” pane is the folder tree on the server; one click opens that lab. 
 ### 3. Double-click a node — the terminal is already open
 
 On serial-console nodes (IOL, routers/switches) a double-click opens the CLI in the bottom dock. On Linux / Windows nodes, which only have VNC/RDP, the double-click opens the graphical console instead — docked at the bottom, or in its own maximisable window.
+
+![Node console](docs/step-terminal.png)
 
 After those three steps it's just daily work: add nodes from the template library, drag them around, cable them up, batch start-stop, click a link and delete it, drop a few text boxes as annotations — all on the same canvas, never back to the web UI.
 
