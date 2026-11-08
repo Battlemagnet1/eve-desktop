@@ -2,15 +2,48 @@
 
 [简体中文](README.md) ｜ **English**
 
+> Running labs on EVE-NG usually goes like this: one browser tab for the topology, another
+> tab for the console, and yet another SSH session just to run tcpdump; you drag a node,
+> forget to save, and the work is gone. **EVE Desktop folds all of it into one native
+> Windows window — the topology opens on launch, double-click is a terminal, one click
+> removes a link.**
+
 A desktop client for EVE-NG: it folds the web UI's **lab/topology browsing, node control, built-in terminals, image import/export, and NIC / internet-uplink configuration** into one native window.
-
-It is not an image repository and does not download images — images are only imported from your disk or exported from the server.
-
-![Topology view](docs/preview.png)
 
 - Works with **Community 6.x** and **Pro 7.x** (capability probing, no version-number branching)
 - Nothing to install on the EVE server (REST API + SSH only)
-- All front-end assets ship inside the package — no CDN
+- Not an image repository and no online downloads — images only come from your disk or the server; all front-end assets ship inside the package (no CDN)
+
+---
+
+## 30-second tour
+
+### 1. Install, open, enter the server once
+
+Grab `EVE-Desktop-Setup-<version>.exe` from [Releases](https://github.com/Battlemagnet1/eve-desktop/releases) (~15 MB, runtime included — **no Python needed**). To build it yourself from source, see “[Installation](#installation)” below.
+
+The first launch opens Settings, and only four fields matter:
+
+| Field | What to put |
+|---|---|
+| Server address / API port | The EVE IP; port `80`, or `443` with the scheme switched to https |
+| EVE user / password | Whatever you use for the web UI (default `admin/eve`) |
+| Tick “also open an SSH connection” | Image import/export, host shell and the uplink wizard **all need it**; enter the root password |
+| SSH user / port | Default `root` / `22` |
+
+Hit “Save and connect”. Next time it reconnects on its own (the password is encrypted on this machine with Windows DPAPI).
+
+### 2. Click a lab on the left — the canvas is the topology
+
+![Topology view](docs/preview.png)
+
+The “Labs” pane is the folder tree on the server; one click opens that lab. The canvas rebuilds nodes, links and clouds from the coordinates stored in the `.unl`, and polls run state every 3 seconds. Wheel to zoom, right-drag / Space-drag / middle-drag to pan, “Fit” in the toolbar to jump back to the whole picture.
+
+### 3. Double-click a node — the terminal is already open
+
+On serial-console nodes (IOL, routers/switches) a double-click opens the CLI in the bottom dock. On Linux / Windows nodes, which only have VNC/RDP, the double-click opens the graphical console instead — docked at the bottom, or in its own maximisable window.
+
+After those three steps it's just daily work: add nodes from the template library, drag them around, cable them up, batch start-stop, click a link and delete it, drop a few text boxes as annotations — all on the same canvas, never back to the web UI.
 
 ---
 
